@@ -2,7 +2,7 @@
 // XL Release version:   8.0.1
 // Date created:         Tue May 08 11:32:44 CEST 2018
 
-def release_id = xlr {
+def target_release = xlr {
   release('Catalog Component Release') {
     variables {
       booleanVariable('run_build') {
@@ -84,5 +84,5 @@ def release_id = xlr {
     }
   }
 }
-releaseVariables['component_release_id'] = release_id
+releaseVariables['component_release_id'] = target_release.id
 
