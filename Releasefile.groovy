@@ -2,6 +2,8 @@
 // XL Release version:   8.0.1
 // Date created:         Tue May 08 11:32:44 CEST 2018
 
+println "Loaded [Releasefile.groovy](https://raw.githubusercontent.com/ravan/coolstore-catalog-spring-boot/master/Releasefile.groovy)"
+
 def target_release = xlr {
   release('Catalog Component Release') {
     variables {
@@ -15,6 +17,9 @@ def target_release = xlr {
       stringVariable('mode') {
         value 'demo'
       }
+      stringVariable('componentReleaseTitle') {
+        value 'Release Catalog Component'
+      }
     }
     scheduledStartDate Date.parse("yyyy-MM-dd'T'HH:mm:ssZ", '2018-05-08T09:00:00+0200')
     scriptUsername 'admin'
@@ -24,7 +29,7 @@ def target_release = xlr {
         color '#0099CC'
         tasks {
           createRelease('Release Catalog Component') {
-            newReleaseTitle 'Release Catalog Component'
+            newReleaseTitle '${componentReleaseTitle}'
             template 'CoolStore Microservices Project/Technical release/deploy/component/Component Continuous Delivery Template'
             templateVariables {
               stringVariable('appVersion') {
@@ -85,4 +90,5 @@ def target_release = xlr {
   }
 }
 releaseVariables['component_release_id'] = target_release.id
+releaseApi.start(target_release.id)
 
