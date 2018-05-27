@@ -45,7 +45,7 @@ def target_release = xlr {
                 value 'master'
               }
               stringVariable('gitUri') {
-                value 'https://github.com/ravan/coolstore-catalog-spring-boot'
+                value 'https://github.com/xebialabs-se/coolstore-catalog-spring-boot'
               }
               stringVariable('streamName') {
                 value 'catalog'
@@ -54,7 +54,7 @@ def target_release = xlr {
                 value '2.3'
               }
               stringVariable('useBuildImage') {
-                value 'redhat-openjdk18-openshift:1.1'
+                value 'registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift:1.1'
               }
               stringVariable('xld_url') {
                 value '${global.xlr_url}'
