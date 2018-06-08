@@ -39,7 +39,7 @@ spec:
           value: catalogdb
         - name: DB_SERVER
           value: catalog-mongodb
-        image: {{REGISTRY}}/coolstore-dev/catalog:@APP_VERSION@
+        image: {{REGISTRY}}/coolstore-build/catalog:@APP_VERSION@
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
