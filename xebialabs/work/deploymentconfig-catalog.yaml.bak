@@ -24,22 +24,22 @@ spec:
         - configMap:
             name: config-catalog
             defaultMode: 420
-          name: 'config-catalog-m5y28'
+        name: config-catalog-m5y28
       containers:
       - env:
         - name: JWS_ADMIN_USERNAME
-          value: 'Skq3VtCd'
+          value: Skq3VtCd
         - name: JWS_ADMIN_PASSWORD
-          value: 'oktt6yhw'
+          value: oktt6yhw
         - name: DB_USERNAME
-          value: '{{CATALOG_DB_USERNAME}}'
+          value: {{CATALOG_DB_USERNAME}}
         - name: DB_PASSWORD
-          value: '{{CATALOG_DB_PASSWORD}}'
+          value: {{CATALOG_DB_PASSWORD}}
         - name: DB_NAME
           value: catalogdb
         - name: DB_SERVER
-          value: 'catalog-mongodb'
-        image: '{{REGISTRY}}/coolstore-build/catalog:@APP_VERSION@'
+          value: catalog-mongodb
+        image: {{REGISTRY}}/coolstore-dev/catalog:@APP_VERSION@
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
@@ -47,10 +47,10 @@ spec:
             path: /health
             port: 8080
             scheme: HTTP
-          initialDelaySeconds: '{{catalog.initialDelaySeconds}}'
-          periodSeconds: '{{catalog.periodSeconds}}'
+          initialDelaySeconds: {{catalog.initialDelaySeconds}}
+          periodSeconds: {{catalog.periodSeconds}}
           successThreshold: 1
-          timeoutSeconds: '{{catalog.timeoutSeconds}}'
+          timeoutSeconds: {{catalog.timeoutSeconds}}
         name: catalog
         ports:
         - containerPort: 8778
@@ -65,10 +65,10 @@ spec:
             path: /health
             port: 8080
             scheme: HTTP
-          initialDelaySeconds: '{{catalog.initialDelaySeconds}}'
-          periodSeconds: '{{catalog.periodSeconds}}'
+          initialDelaySeconds: {{catalog.initialDelaySeconds}}
+          periodSeconds: {{catalog.periodSeconds}}
           successThreshold: 1
-          timeoutSeconds: '{{catalog.timeoutSeconds}}'
+          timeoutSeconds: {{catalog.timeoutSeconds}}
           volumeMounts:
             - mountPath: /deployment/config
               name: config-catalog-m5y28
@@ -93,6 +93,6 @@ spec:
       from:
         kind: ImageStreamTag
         name: catalog:@APP_VERSION@
-        namespace: coolstore-build
+        namespace: coolstore-dev
     type: ImageChange
   - type: ConfigChange
